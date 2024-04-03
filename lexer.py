@@ -1,5 +1,5 @@
 from enum import Enum
-from dataclasses import dataclass
+from typing import List
 
 class TokenType(Enum):
     Number = 0
@@ -33,10 +33,9 @@ def isalp(str: str) -> bool:
 def isignorable(str: str) -> bool:
     return str == ' ' or str == '\n' or str == '\t'
     
-def tokenize(sourceCode: str) -> Token:
+def tokenize(sourceCode: str) -> List[Token]:
     tokens = []
     src = list(sourceCode)
-    print(src)
 
     while len(src):
         match src[0]:
@@ -86,8 +85,3 @@ def tokenize(sourceCode: str) -> Token:
                     raise ValueError(f"Unrecognized Character: {src[0]}")
                 
     return tokens
-
-print(tokenize(input()))
-
-
-isint("a")
